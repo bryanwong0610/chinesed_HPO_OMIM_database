@@ -1,0 +1,13 @@
+setwd('/Users/bryanwong/Downloads/CHPO_chinesed/Gene_info')
+library(biomaRt)
+listEnsembl(GRCh=37)
+ensembl = useEnsembl(biomart="ensembl", dataset="hsapiens_gene_ensembl",GRCh = 37)
+#ensembl_ab_detail=as.data.frame(ensembl@attributes)
+#write.csv(ensembl_ab_detail,'ensemble_db_description.csv')
+attributes=listAttributes(ensembl)
+write.csv(attributes,'biomaRT_attribute.csv')
+gene_info_id = getBM(attributes=c('ensembl_gene_id','hgnc_symbol','entrezgene_id','entrezgene_description','gene_biotype'),mart = ensembl)
+write.csv(gene_info_id,'gene_info.csv')
+gene_info_SE = getBM(attributes=c('ensembl_gene_id','start_position','end_position'),mart = ensembl)
+gene_info_GO = getBM(attributes=c('ensembl_gene_id','go_id','name_1006'),mart = ensembl)
+,'percentage_gene_gc_content','external_synonym','phenotype_description'
