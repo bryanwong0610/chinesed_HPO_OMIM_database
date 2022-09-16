@@ -90,4 +90,4 @@ result['OMIM_cn']=OMIM_res_cn
 result['HPO_en']=HPO_res_en
 result['HPO_cn']=HPO_res_cn    
 
-result.to_csv('./H_O_annotated.csv')
+result.to_csv('./H_O_annotated.csv',encoding='utf-8')
