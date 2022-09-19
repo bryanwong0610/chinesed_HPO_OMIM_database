@@ -29,9 +29,9 @@
 
 ### data from:
  gene_to_phenotype.txt ; phentype_to_gene.txt 
- this two dataset was downloaded from HPO website
- CHPO.txt
- downloaded from CHPO webstie
+ this two dataset was downloaded from HPO website. 
+ 
+ CHPO.txt downloaded from CHPO webstie
 
 ### database format :
 this database was similar like the OMIM
