@@ -36,8 +36,8 @@ HPO_res_en=[]
 HPO_res_cn=[]
 for i in range(len(result)):
     gene_list=[]
-    if result['Gene_refGene'][i] != result['Gene_ensGene'][i]:
-        if ';' in result['Gene_refGene'][i]:
+    if result['Gene_refGene'][i] != result['Gene_ensGene'][i]: ## judge the Gene name form refseq is equal to ensembl
+        if ';' in result['Gene_refGene'][i]: ## annovar will annotatate the intergenic to multi gene name 
             gene_list=result['Gene_refGene'][i].split(';')
             if ';' in result['Gene_ensGene'][i] :
                 gene_list=gene_list+result['Gene_ensGene'][i].split(';')
@@ -48,13 +48,13 @@ for i in range(len(result)):
             if ';' in result['Gene_ensGene'][i]:
                 gene_list=gene_list+result['Gene_ensGene'][i].split(';')
             else :
-                gene_list.append(result['Gene_ensGene'][i])
+                gene_list.append(result['Gene_ensGene'][i]) ## generate the final gene list for the same SNP loci
     elif result['Gene_refGene'][i] == result['Gene_ensGene'][i]:
         if ';' in result['Gene_refGene'][i]:
             gene_list=result['Gene_refGene'][i].split(';')
         else:
             gene_list.append(result['Gene_refGene'][i])
-    if len(gene_list) >= 1 :
+    if len(gene_list) >= 1 : ##  Multi gene annotation ? single gene annotation
         tmp_en=''
         tmp_cn=''
         HPO_tmp_en=''
